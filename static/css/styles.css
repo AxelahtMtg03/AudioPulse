@@ -1,0 +1,408 @@
+@import url('https://fonts.googleapis.com/css?family=Exo:400,700');
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Exo', sans-serif;
+}
+
+.language-form {
+        display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-top: 20px;
+
+}
+
+.language-form select {
+    padding: 12px 18px;
+    font-size: 16px;
+    border-radius: 10px;
+    border: 2px solid #00bfff;
+    background-color: rgba(0, 0, 0, 0.4);
+    color: #fff;
+    outline: none;
+    transition: all 0.3s ease;
+    appearance: none; /* Supprime l'apparence native */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+.language-form select option {
+    background-color: #001f3f;
+    color: #fff;
+    padding: 10px;
+}
+
+.language-form select option:hover,
+.language-form select option:focus {
+    background-color: #00bfff;
+    color: #000;
+}
+
+.language-form button {
+    padding: 12px 25px;
+    font-size: 16px;
+    color: #fff;
+    background: transparent;
+    border: 2px solid #00bfff;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    letter-spacing: 1px;
+    margin-left: 10px; 
+    vertical-align: middle;
+}
+
+.language-form button:hover {
+    background: #00bfff;
+    box-shadow: 0 0 10px #00bfff70, 0 0 25px #00bfff50;
+    transform: scale(1.05);
+}
+/* ==== WRAPPER POUR LE SELECT ==== */
+.select-wrapper {
+    position: relative;
+    display: inline-block;
+    width: 200px;
+}
+
+/* ==== SELECT AVEC STYLE ==== */
+.select-wrapper select {
+    width: 100%;
+    padding: 12px 45px 12px 15px; 
+    font-size: 16px;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.4);
+    border: 2px solid #00bfff;
+    border-radius: 10px;
+    outline: none;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* Option menu déroulant */
+.select-wrapper select option {
+    background-color: #001f3f;
+    color: #fff;
+}
+
+/* Hover / focus effet */
+.select-wrapper select:hover,
+.select-wrapper select:focus {
+    border-color: #00bfff;
+    box-shadow: 0 0 10px #00bfff70;
+}
+
+/* ==== FLÈCHE DÉROULANTE ==== */
+.select-wrapper::after {
+    content: "▼";
+    position: absolute;
+    right: 12px; /* rapproche la flèche du bord droit */
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 14px;
+    color: #00bfff;
+    pointer-events: none;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+
+/* Animation quand le select est focus */
+.select-wrapper select:focus + .select-wrapper::after,
+.select-wrapper:focus-within::after {
+    transform: translateY(-50%) rotate(180deg);
+    color: #fff;
+}
+
+.context {
+    width: 100%;
+    position: absolute;
+    top: 5vh;
+
+}
+
+.context h1 {
+    text-align: center;
+    color: #fefefe;
+    font-size: 150px;
+}
+
+.context h3 {
+    text-align: center;
+    color: #e4b714;
+    font-size: 30px;
+}
+
+
+/* ---- FORM STYLING ---- */
+.download-form {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.download-form label {
+    color: #fff;
+    font-size: 18px;
+    letter-spacing: 0.5px;
+}
+
+.download-form input,
+.download-form select {
+    width: 200px;
+    padding: 12px 15px;
+    border: 2px solid #ffffff90;
+    border-radius: 10px;
+    background:  rgba(0, 0, 0, 0.4);;
+    color: #fff;
+    font-size: 16px;
+    outline: none;
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: center;
+}
+
+.download-form input::placeholder {
+    color: #ffffff70;
+}
+
+.download-form input:focus,
+.download-form select:focus {
+    border-color: #00bfff;
+    box-shadow: 0 0 10px #00bfff70;
+}
+
+/* ---- BUTTON ---- */
+.download-form button {
+    width: 200px;
+    padding: 12px 20px;
+    font-size: 18px;
+    color: #fff;
+    background: transparent;
+    border: 2px solid #00bfff;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    letter-spacing: 1px;
+}
+
+.download-form button:hover {
+    background: #00bfff;
+    box-shadow: 0 0 15px #00bfff, 0 0 40px #00bfff70;
+    transform: scale(1.05);
+}
+.download-form select {
+    background-color: rgba(0, 0, 0, 0.4);
+    color: #fff;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border: 2px solid #00bfff;
+    border-radius: 10px;
+    padding: 12px 15px;
+    font-size: 16px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+/* Style du menu déroulant (les options quand on clique) */
+.download-form select option {
+    background-color: #001f3f;  /* fond bleu nuit */
+    color: #fff;                /* texte blanc */
+    padding: 10px;
+}
+
+/* Option survolée */
+.download-form select option:hover,
+.download-form select option:focus {
+    background-color: #00bfff;  /* bleu lumineux */
+    color: #000;                /* texte noir lisible */
+}
+
+
+.area {
+    background: #000428;
+    background: -webkit-linear-gradient(to right, #000428, #004e92);
+    background: linear-gradient(to right, #000428, #004e92);
+    width: 100%;
+    height: 100vh;
+}
+
+.circles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.circles li {
+    position: absolute;
+    display: block;
+    list-style: none;
+    width: 20px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    animation: animate 25s linear infinite;
+    bottom: -150px;
+
+}
+
+.circles li:nth-child(1) {
+    left: 25%;
+    width: 80px;
+    height: 80px;
+    animation-delay: 0s;
+}
+
+
+.circles li:nth-child(2) {
+    left: 10%;
+    width: 20px;
+    height: 20px;
+    animation-delay: 2s;
+    animation-duration: 12s;
+}
+
+.circles li:nth-child(3) {
+    left: 70%;
+    width: 20px;
+    height: 20px;
+    animation-delay: 4s;
+}
+
+.circles li:nth-child(4) {
+    left: 40%;
+    width: 60px;
+    height: 60px;
+    animation-delay: 0s;
+    animation-duration: 18s;
+}
+
+.circles li:nth-child(5) {
+    left: 65%;
+    width: 20px;
+    height: 20px;
+    animation-delay: 0s;
+}
+
+.circles li:nth-child(6) {
+    left: 75%;
+    width: 110px;
+    height: 110px;
+    animation-delay: 3s;
+}
+
+.circles li:nth-child(7) {
+    left: 35%;
+    width: 150px;
+    height: 150px;
+    animation-delay: 7s;
+}
+
+.circles li:nth-child(8) {
+    left: 50%;
+    width: 25px;
+    height: 25px;
+    animation-delay: 15s;
+    animation-duration: 45s;
+}
+
+.circles li:nth-child(9) {
+    left: 20%;
+    width: 15px;
+    height: 15px;
+    animation-delay: 2s;
+    animation-duration: 35s;
+}
+
+.circles li:nth-child(10) {
+    left: 85%;
+    width: 150px;
+    height: 150px;
+    animation-delay: 0s;
+    animation-duration: 11s;
+}
+
+
+
+@keyframes animate {
+
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+        border-radius: 0;
+    }
+
+    100% {
+        transform: translateY(-1000px) rotate(720deg);
+        opacity: 0;
+        border-radius: 50%;
+    }
+
+}
+
+.context {
+    text-align: center;
+    color: #fff;
+}
+
+.button-container {
+    margin-top: 50px;
+}
+
+.register-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: transparent;
+    border: 2px solid #fff;
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    border-radius: 15px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.register-button:hover {
+    transform: scale(1.09);
+}
+
+
+/* Responsive Design */
+
+/* For Mobile Devices */
+@media (max-width: 767px) {
+    .context h1 {
+        font-size: 80px;
+        /* Adjust the font size for smaller screens */
+    }
+
+    .context h3 {
+        font-size: 20px;
+        /* Adjust the font size for smaller screens */
+    }
+}
+
+/* For Tablet Devices */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .context h1 {
+        font-size: 120px;
+        /* Adjust the font size for tablet screens */
+    }
+
+    .context h3 {
+        font-size: 25px;
+        /* Adjust the font size for tablet screens */
+    }
+}

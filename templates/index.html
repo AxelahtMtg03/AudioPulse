@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AudioPulse</title>
+    <link rel="icon" href="/static/images/logo.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Exo:400,700" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="area">
+        <div class="circles">
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+    </div>
+    <div class="context">
+<form method="POST" action="/langue" class="language-form">
+<div class="select-wrapper">
+    <select name="language" id="language">
+        <option value="en" {% if t=='en' %}selected{% endif %}>English</option>
+        <option value="fr" {% if t=='fr' %}selected{% endif %}>Français</option>
+        <option value="es" {% if t=='es' %}selected{% endif %}>Español</option>
+        <option value="zh" {% if t=='zh' %}selected{% endif %}>中文</option>
+        <option value="ru" {% if t=='ru' %}selected{% endif %}>Русский</option>
+    </select>
+</div>
+    <button type="submit">Valider</button>
+</form>
+
+        <h1>{{ translations[t]['title'] }}</h1>
+        <h3>{{ translations[t]['subtitle'] }}</h3>
+
+        <form method="POST" class="download-form">
+            <label for="url">{{ translations[t]['enter_url'] }}</label>
+            <input type="text" name="url" id="url" placeholder="{{ translations[t]['placeholder'] }}" required>
+
+            <label for="mode">{{ translations[t]['choose_mode'] }}</label>
+            <div class="select-wrapper">
+
+            <select name="mode" id="mode" required>
+                <option value="mp3">Mp3</option>
+                <option value="mp4">Mp4</option>
+            </select>
+            </div>
+            <button type="submit">{{ translations[t]['download'] }}</button>
+        </form>
+    </div>
+</body>
+
+</html>
