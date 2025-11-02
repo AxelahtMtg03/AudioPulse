@@ -1,6 +1,9 @@
 from pytubefix import YouTube 
 from pytubefix.cli import on_progress
-from flask import Flask, render_template,request, redirect, url_for, session
+from flask import Flask, render_template,request, redirect, url_for, session,send_file
+import io
+import os
+import traceback
 
 app = Flask(__name__)
 urlc = "https://www.youtube.com/watch?v=7X2TAY0U0LI" 
@@ -52,39 +55,101 @@ translations = {
     }
 }
 
-def downloadmp4(url):
-    yt = YouTube(url, on_progress_callback=on_progress) 
-    print(f"Téléchargement de : {yt.title}") 
-    ys = yt.streams.get_highest_resolution() 
-    ys.download()
+# def downloadmp4(url):
+#     yt = YouTube(url, on_progress_callback=on_progress) 
+#     print(f"Téléchargement de : {yt.title}") 
+#     ys = yt.streams.get_highest_resolution() 
+#     ys.download()
     
-def downloadmp3(url):
-    yt = YouTube(url, on_progress_callback=on_progress) 
-    print(f"Téléchargement de : {yt.title}") 
-    ys = yt.streams.get_audio_only() 
-    ys.download()
+# def downloadmp3(url):
+#     yt = YouTube(url, on_progress_callback=on_progress) 
+#     print(f"Téléchargement de : {yt.title}") 
+#     ys = yt.streams.get_audio_only() 
+#     ys.download()
+# @app.route('/')
+# def index():
+#     t = session.get('lang', 'en')
+#     return render_template('index.html',t=t,translations=translations)
+
+# @app.route('/mode',methods=['GET', 'POST'])
+# def download():
+#     t = session.get('lang', 'en')  # récupère la langue depuis la session
+
+#     if request.method == 'POST':
+#         url = request.form.get('url')
+#         mode = request.form.get('mode')
+#         if not "https://www.youtube.com/watch" in url:
+#             return render_template('index.html',t=t,translations=translations)
+
+#         if mode == 'mp3':
+#             downloadmp3(url)
+#         elif mode == 'mp4':
+#             downloadmp4(url)
+#     return render_template('index.html',t=t,translations=translations)
+
+def download_mp4(url):
+    try:
+        yt = YouTube(url, on_progress_callback=on_progress) 
+        print(f"Téléchargement de : {yt.title}") 
+        ys = yt.streams.get_highest_resolution() 
+        
+        # Télécharge en mémoire, pas sur le disque
+        buffer = io.BytesIO()
+        ys.stream_to_buffer(buffer)
+        buffer.seek(0)
+        
+        return buffer, yt.title
+    except Exception as e:
+        raise e
+
+def download_mp3(url):
+    try:
+        yt = YouTube(url, on_progress_callback=on_progress) 
+        print(f"Téléchargement de : {yt.title}") 
+        ys = yt.streams.get_audio_only() 
+        
+        # Télécharge en mémoire
+        buffer = io.BytesIO()
+        ys.stream_to_buffer(buffer)
+        buffer.seek(0)
+        
+        return buffer, yt.title
+    except Exception as e:
+        raise e
+
 @app.route('/')
 def index():
     t = session.get('lang', 'en')
-    return render_template('index.html',t=t,translations=translations)
+    return render_template('index.html', t=t, translations=translations)
 
-@app.route('/mode',methods=['GET', 'POST'])
+@app.route('/mode', methods=['GET', 'POST'])
 def download():
-    t = session.get('lang', 'en')  # récupère la langue depuis la session
+    t = session.get('lang', 'en')
 
     if request.method == 'POST':
-        url = request.form.get('url')
-        mode = request.form.get('mode')
-        if not "https://www.youtube.com/watch" in url:
-            return render_template('index.html',t=t,translations=translations)
+        try:
+            url = request.form.get('url')
+            mode = request.form.get('mode')
+            
+            if not url or "youtube.com" not in url and "youtu.be" not in url:
+                return render_template('index.html', t=t, translations=translations, error="URL YouTube invalide")
 
-        if mode == 'mp3':
-            downloadmp3(url)
-        elif mode == 'mp4':
-            downloadmp4(url)
-    return render_template('index.html',t=t,translations=translations)
+            if mode == 'mp3':
+                buffer, title = download_mp3(url)
+                filename = f"{title}.mp3"
+                return send_file(buffer, as_attachment=True, download_name=filename, mimetype="audio/mpeg")
+                
+            elif mode == 'mp4':
+                buffer, title = download_mp4(url)
+                filename = f"{title}.mp4"
+                return send_file(buffer, as_attachment=True, download_name=filename, mimetype="video/mp4")
+                
+        except Exception as e:
+            error_traceback = traceback.format_exc()
+            print(f"Erreur: {error_traceback}")
+            return render_template('index.html', t=t, translations=translations, error=str(e))
 
-
+    return render_template('index.html', t=t, translations=translations)
 @app.route('/langue',methods=['GET', 'POST'])
 def set_lang():
     language = request.form.get('language')
