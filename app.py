@@ -1,10 +1,25 @@
 from pytubefix import YouTube 
 from pytubefix.cli import on_progress
 from flask import Flask, render_template,request, redirect, url_for, session,send_file
+
 import io
 import os
 import traceback
+headers = {
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
+    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+    'Accept-Language': 'en-US,en;q=0.5',
+    'Accept-Encoding': 'gzip, deflate',
+    'DNT': '1',
+    'Connection': 'keep-alive',
+    'Upgrade-Insecure-Requests': '1',
+}
 
+def setup_pytubefix():
+    # Configure les headers par défaut
+    create_get_request = lambda url, headers: create_get_request(url, {**headers, **{
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+    }})
 app = Flask(__name__)
 urlc = "https://www.youtube.com/watch?v=7X2TAY0U0LI" 
 app.secret_key = "une_clef_secrete"
@@ -89,6 +104,8 @@ translations = {
 
 def download_mp4(url):
     try:
+        setup_pytubefix()
+
         yt = YouTube(url, on_progress_callback=on_progress) 
         print(f"Téléchargement de : {yt.title}") 
         ys = yt.streams.get_highest_resolution() 
@@ -104,6 +121,8 @@ def download_mp4(url):
 
 def download_mp3(url):
     try:
+        setup_pytubefix()
+
         yt = YouTube(url, on_progress_callback=on_progress) 
         print(f"Téléchargement de : {yt.title}") 
         ys = yt.streams.get_audio_only() 
