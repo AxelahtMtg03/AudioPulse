@@ -63,7 +63,6 @@ def downloadmp3(url):
     print(f"Téléchargement de : {yt.title}") 
     ys = yt.streams.get_audio_only() 
     ys.download()
-#downloadmp4(url)
 @app.route('/', methods=['GET', 'POST'])
 def index():
     t = session.get('lang', 'en')  # récupère la langue depuis la session
