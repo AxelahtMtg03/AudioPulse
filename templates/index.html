@@ -45,7 +45,7 @@
         <h1>{{ translations[t]['title'] }}</h1>
         <h3>{{ translations[t]['subtitle'] }}</h3>
 
-        <form method="POST" class="download-form">
+        <form method="POST" class="download-form" action="/mode">
             <label for="url">{{ translations[t]['enter_url'] }}</label>
             <input type="text" name="url" id="url" placeholder="{{ translations[t]['placeholder'] }}" required>
 

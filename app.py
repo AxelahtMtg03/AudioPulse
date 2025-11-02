@@ -63,8 +63,13 @@ def downloadmp3(url):
     print(f"Téléchargement de : {yt.title}") 
     ys = yt.streams.get_audio_only() 
     ys.download()
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/')
 def index():
+    t = session.get('lang', 'en')
+    return render_template('index.html',t=t,translations=translations)
+
+@app.route('/mode',methods=['GET', 'POST'])
+def download():
     t = session.get('lang', 'en')  # récupère la langue depuis la session
 
     if request.method == 'POST':
@@ -77,9 +82,6 @@ def index():
             downloadmp3(url)
         elif mode == 'mp4':
             downloadmp4(url)
-
-
-    
     return render_template('index.html',t=t,translations=translations)
 
 
