@@ -159,7 +159,7 @@ body {
 
 .download-form input,
 .download-form select {
-    width: 200px;
+    width: 254px;
     padding: 12px 15px;
     border: 2px solid #ffffff90;
     border-radius: 10px;
@@ -404,5 +404,119 @@ body {
     .context h3 {
         font-size: 25px;
         /* Adjust the font size for tablet screens */
+    }
+}
+/* ==== WRAPPER POUR LE SELECT ==== */
+.select-wrapper {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    max-width: 250px; /* limite sur les grands écrans */
+}
+
+/* ==== SELECT AVEC STYLE ==== */
+.select-wrapper select {
+    width: 100%;
+    padding: 12px 45px 12px 15px; 
+    font-size: 16px;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.4);
+    border: 2px solid #00bfff;
+    border-radius: 10px;
+    outline: none;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* ==== FLÈCHE DÉROULANTE (bien intégrée) ==== */
+.select-wrapper::after {
+    content: "▼";
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 14px;
+    color: #00bfff;
+    pointer-events: none;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+/* Animation quand le select est focus */
+.select-wrapper:focus-within::after {
+    transform: translateY(-50%) rotate(180deg);
+    color: #fff;
+}
+
+/* ---- RESPONSIVE ---- */
+@media (max-width: 480px) {
+
+    .context {
+        padding: 0 15px;
+    }
+
+    .context h1 {
+        font-size: 50px;
+        line-height: 1.1;
+    }
+
+    .context h3 {
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+
+    .language-form {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        gap: 12px;
+    }
+
+    .select-wrapper {
+        width: 90%;
+        max-width: none;
+    }
+
+    .language-form select,
+    .language-form button,
+    .download-form input,
+    .download-form select,
+    .download-form button {
+        width: 100%;
+        max-width: none;
+        font-size: 14px;
+        padding: 10px 15px;
+        box-sizing: border-box;
+    }
+
+    .download-form {
+        width: 100%;
+        align-items: center;
+        padding: 0 10px;
+    }
+
+    .download-form label {
+        text-align: center;
+        font-size: 16px;
+    }
+
+    .area {
+        height: auto;
+        min-height: 100vh;
+    }
+}
+
+/* Tablettes */
+@media (min-width: 481px) and (max-width: 1023px) {
+    .context h1 {
+        font-size: 90px;
+    }
+    .context h3 {
+        font-size: 22px;
+    }
+    .select-wrapper {
+        width: 80%;
     }
 }

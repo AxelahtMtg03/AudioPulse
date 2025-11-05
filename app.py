@@ -59,8 +59,7 @@ translations = {
 
 def download_mp4(url):
     try:
-        yt = YouTube(url,client='WEB', on_progress_callback=on_progress) 
-        print(f"Téléchargement de : {yt.title}") 
+        yt = YouTube(url) 
         ys = yt.streams.get_highest_resolution() 
         
         buffer = io.BytesIO()
@@ -73,9 +72,8 @@ def download_mp4(url):
 
 def download_mp3(url):
     try:
-        yt = YouTube(url,client='WEB', on_progress_callback=on_progress) 
-        print(f"Téléchargement de : {yt.title}") 
-        ys = yt.streams.filter(only_audio=True, mime_type="audio/mp4").first()
+        yt = YouTube(url) 
+        ys = yt.streams.get_audio_only() 
         
         # Télécharge en mémoire
         buffer = io.BytesIO()
