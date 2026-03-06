@@ -20,13 +20,10 @@ Une petite application web où l'utilisateur peut :
 
 ---
 
-# 🖼️ Aperçu de l'interface
+## 🖼️ Interface
 
-*(Ajoute une capture d'écran ici quand l'interface sera prête)*
+![Interface de l'application](img/screen.png)
 
-```
-images/screenshot.png
-```
 
 ---
 
