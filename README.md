@@ -1,42 +1,69 @@
-# My Awesome Flask Project
+# 🎵 YouTube Downloader
 
-## A step-by-step tutorial for deploying Flask apps to the live web using Vercel.
+![Python](https://img.shields.io/badge/Python-3.x-blue?logo=python)
+![Flask](https://img.shields.io/badge/Flask-Web%20Framework-black?logo=flask)
+![Status](https://img.shields.io/badge/Project-Active-success)
+![License](https://img.shields.io/badge/License-Educational-lightgrey)
 
-### Deployed Link: [Live Demo](https://flask-app-jade.vercel.app/)
+Un **téléchargeur YouTube simple** développé avec **Python, Flask et Jinja2**.  
+Cette application web permet de **télécharger des vidéos YouTube en MP4 ou MP3** directement depuis une interface web.
 
-### Project Walkthrough: [YouTube Tutorial](https://youtu.be/miQmOlPF_Gs)
+---
 
-### Vercel: [Learn More About Vercel](https://vercel.com)
+# 🚀 Aperçu
 
-### Technologies Used:
-- Flask
-- Python 3.9
-- Any additional libraries you used
+Une petite application web où l'utilisateur peut :
 
-### Folder Structure (Highlighted):
+1. Coller un **lien YouTube**
+2. Choisir le **format de téléchargement**
+3. Télécharger la **vidéo ou l'audio**
+
+---
+
+# 🖼️ Aperçu de l'interface
+
+*(Ajoute une capture d'écran ici quand l'interface sera prête)*
+
 ```
-project-root/
-│
-├── app.py
-├── vercel.json
-├── requirements.txt
-├── static/
-│   ├── css/
-│   │   └── style.css
-│   ├── js/
-│   │   └── script.js
-│   └── images/
-│
-└── templates/
-    └── index.html
+images/screenshot.png
 ```
 
+---
 
-### How to Clone & Run:
-1. Clone Repo: `git clone https://github.com/CodingCraftYT/Flask-App.git`
-2. Install Dependencies: `cd project-root && pip install -r requirements.txt`
-3. Run Locally: `python app.py`
+# 🛠️ Technologies utilisées
 
-### Ending: 
-Feel free to reach out with questions or contribute to this project!
+| Technologie | Description |
+|-------------|-------------|
+| Python | Langage principal |
+| Flask | Framework web backend |
+| Jinja2 | Moteur de templates |
+| pytube / yt-dlp | Téléchargement des vidéos |
+| HTML / CSS | Interface utilisateur |
 
+---
+
+# 🧑‍💻 Utilisation
+
+1. Copier une **URL YouTube**
+2. La coller dans le champ du site
+3. Choisir **MP3** ou **MP4**
+4. Cliquer sur **Download**
+
+Le fichier sera téléchargé automatiquement.
+
+---
+
+# ⚠️ Disclaimer
+
+Ce projet est développé uniquement à **des fins éducatives**.
+
+Merci de respecter :
+
+- les **droits d'auteur**
+- les **conditions d'utilisation de YouTube**
+
+---
+
+# 📜 Licence
+
+Projet open-source pour **apprentissage et expérimentation**.
