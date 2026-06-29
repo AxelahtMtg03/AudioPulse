@@ -18,15 +18,14 @@ Une petite application web où l'utilisateur peut :
 2. Choisir le **format de téléchargement**
 3. Télécharger la **vidéo ou l'audio**
 
+Le fichier sera téléchargé automatiquement.
+
 ---
 
-# 🖼️ Aperçu de l'interface
+## 🖼️ Interface
 
-*(Ajoute une capture d'écran ici quand l'interface sera prête)*
+![Interface de l'application](img/screen.png)
 
-```
-images/screenshot.png
-```
 
 ---
 
@@ -42,17 +41,6 @@ images/screenshot.png
 
 ---
 
-# 🧑‍💻 Utilisation
-
-1. Copier une **URL YouTube**
-2. La coller dans le champ du site
-3. Choisir **MP3** ou **MP4**
-4. Cliquer sur **Download**
-
-Le fichier sera téléchargé automatiquement.
-
----
-
 # ⚠️ Disclaimer
 
 Ce projet est développé uniquement à **des fins éducatives**.
@@ -64,6 +52,6 @@ Merci de respecter :
 
 ---
 
-# 📜 Licence
+## 👨‍💻 Auteur
 
-Projet open-source pour **apprentissage et expérimentation**.
+**Axel Archambeault 2025**
